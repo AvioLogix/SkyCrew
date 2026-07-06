@@ -2,9 +2,9 @@
 
 # ✈️ SkyCrew
 
-### Flightdeck Utilities incl Voice Controlled Copilot.
+### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.1-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.2.2-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
 ![Runs](https://img.shields.io/badge/100%25-Local%20%26%20Offline-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.1).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.2.2).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -45,9 +45,9 @@ Copilot hears you, understands what you meant, and performs the action in the si
 - 🎙️ **Natural voice control** — speak conversationally; no rigid command syntax to memorize.
 - 🧠 **Built-in AI brain** — a local language model interprets your *intent*, not just keywords.
 - 🛩️ **Live aircraft dashboard** — real-time airspeed, altitude, heading, vertical speed, and more.
-- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, the **iniBuilds Airbus A350-1000**, and the **Cessna 172SP G1000**, with profile-aware command filtering that dims irrelevant commands in the UI.
+- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **iniBuilds Airbus A350-1000**, **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, and **Cessna Citation CJ4**, with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
 - 📋 **Interactive Checklists** — full Preflight/Inflight/Postflight checklists that load automatically for whatever you're flying (currently the **Cessna 172SP G1000** and **iniBuilds A350-1000**), with tick-off progress, per-checklist and reset-all buttons, and must-verify items highlighted.
-- ⛽ **Optimize Fuel (C172SP)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
+- ⛽ **Optimize Fuel (C172SP & C400 Corvalis)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
 - 🎚️ **Live voice-sensitivity sliders** — adjust the background noise gate, minimum speech length, and silence-before-processing thresholds in Settings, applied instantly with no restart.
 - 🎛️ **Full autopilot control** — heading, altitude, vertical speed, LNAV, localizer, approach, level change, speed, and autothrottle arm/speed hold by voice. A350 pilots also get Open Descent, Open Climb, and VNAV via FCU knob pulls.
 - ⚡ **Optional GPU acceleration** — with a compatible NVIDIA/AMD/Intel GPU and spare video memory, Copilot loads a larger, sharper voice model on your graphics card, automatically stepping down if the simulator needs the memory back. A **VRAM Safety Margin** slider in Settings lets you decide exactly how much headroom to always leave for the sim.
@@ -105,8 +105,8 @@ If the automatic first-run download fails, or you'd rather grab the models yours
 | **Flaps Up** | "flaps up", "retract flaps", "raise the flaps" |
 | **Flaps 1 / 2 / 3** *(A350 only)* | "flaps one", "flaps two", "flaps three" |
 | **Flaps Full** *(A350 only)* | "flaps full", "flaps down" |
-| **Flaps 10° / 20° / 30°** *(C172SP only)* | "flaps 10", "flaps 20", "flaps 30" |
-| **Optimize Fuel** *(C172SP only)* | "optimize fuel", "lean the mixture" |
+| **Flaps 10° / 20° / 30°** *(C172SP & C208B only)* | "flaps 10", "flaps 20", "flaps 30" |
+| **Optimize Fuel** *(C172SP & C400 Corvalis only)* | "optimize fuel", "lean the mixture" |
 | **Open Descent** *(A350 only)* | "open descent", "OP DES", "engage open descent" |
 | **Open Climb** *(A350 only)* | "open climb", "OP CLB", "engage open climb" |
 | **VNAV** *(A350 only)* | "engage VNAV", "vertical navigation" |
@@ -239,6 +239,15 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.2.2
+- **Six New Supported Aircraft:** Full voice-command profiles added for the **PMDG 777-300ER**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan** (incl. floats), **Cessna 400 Corvalis**, **Diamond DA40 NG**, and **Cessna Citation CJ4** — each with commands automatically filtered to what that airframe actually has fitted.
+- **PMDG 777 Fixes:** Gear lever now lowers correctly in flight; autothrottle engage now waits the few seconds the real aircraft needs after arming; "autopilot off" now silences the disconnect warning automatically; parking-brake release now simulates toe-brake pressure, matching this aircraft's real ratchet behavior.
+- **Vision Jet Flaps Fixed:** Flaps were not moving at all — now correctly drive this aircraft's flap lever.
+- **Altitude Preselect Reliability:** Fixed several G1000/G3000-family aircraft either ignoring the first altitude command or overshooting and taking a long time to settle.
+- **Fewer False Warnings:** Loading into a flight or switching aircraft could briefly show wildly wrong altitude/speed while things settle, incorrectly triggering the overspeed/altimeter voice warnings — Copilot now recognizes this settling period and holds off until instruments are genuinely stable.
+- **More Reliable GPU Model Switching:** Fixed a bug where the Copilot could get stuck on the larger GPU model even when video memory ran tight, instead of stepping down.
+- **Known Issues:** The Copilot dashboard doesn't yet show the PMDG 777's autopilot mode lights or selected heading/altitude (needs deeper PMDG integration, planned for an upcoming release); Speed Set and Lateral Nav don't yet work on the Citation CJ4 due to its custom autopilot software.
 
 ### v0.2.1
 - **Rebrand to SkyCrew (AvioLogix):** FSCopilot is now **SkyCrew**, part of the **AvioLogix** family of aviation tools. The voice copilot, wake word, and every command work exactly as before — only the name and app identity have changed. The in-app AI chat window (formerly *CoChat*) is now **SkyChat**. Because SkyCrew is a fresh identity, it uses a new settings folder, so the voice models download once more on first launch.
