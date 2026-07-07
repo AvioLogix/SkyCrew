@@ -4,7 +4,7 @@
 
 ### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.2-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.2.3-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
 ![Runs](https://img.shields.io/badge/100%25-Local%20%26%20Offline-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.2).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.2.3).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -239,6 +239,12 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.2.3
+- **Under the Hood — Aircraft Profiles Reorganized:** Each supported aircraft's voice-command mapping now lives in its own self-contained module, so fine-tuning one airframe can no longer have any side effect on another. No change to how anything works — every command behaves exactly as before.
+- **PMDG 777 Heading Fixes:** "Set heading" now dials the value into the MCP window and pushes the HDG SEL switch, matching the real aircraft's control flow. "Heading hold" now simply engages HDG HOLD instead of incorrectly trying to select a heading first.
+- **Cessna 400 Corvalis — Altitude Preselect Fixed:** "Set altitude" now reliably dials in the target altitude, resolving a long-standing issue where the preselect display could get stuck or fail to update.
+- **Supported Aircraft List — New "Checklist" Tag:** The Supported Aircraft popup now flags which airframes have a full interactive checklist set with a cyan **Checklist** tag — currently the iniBuilds Airbus A350-1000 and the Cessna 172 Skyhawk G1000.
 
 ### v0.2.2
 - **Six New Supported Aircraft:** Full voice-command profiles added for the **PMDG 777-300ER**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan** (incl. floats), **Cessna 400 Corvalis**, **Diamond DA40 NG**, and **Cessna Citation CJ4** — each with commands automatically filtered to what that airframe actually has fitted.
