@@ -4,7 +4,7 @@
 
 ### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.3-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.2.4-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
 ![Runs](https://img.shields.io/badge/100%25-Local%20%26%20Offline-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.3).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.2.4).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -48,6 +48,7 @@ Copilot hears you, understands what you meant, and performs the action in the si
 - ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **iniBuilds Airbus A350-1000**, **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, and **Cessna Citation CJ4**, with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
 - 📋 **Interactive Checklists** — full Preflight/Inflight/Postflight checklists that load automatically for whatever you're flying (currently the **Cessna 172SP G1000** and **iniBuilds A350-1000**), with tick-off progress, per-checklist and reset-all buttons, and must-verify items highlighted.
 - ⛽ **Optimize Fuel (C172SP & C400 Corvalis)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
+- 🕹️ **Monitor Speed (Citation CJ4)** — the CJ4 has no autothrottle, so "monitor speed 250" / "maintain speed 210" holds a target airspeed by working the throttles for you. It anticipates the jet's slow spool-up, easing off before the speed arrives instead of chasing it, settling within 1–3 knots and holding steady — say "stop speed monitoring" any time to take the throttles back.
 - 🎚️ **Live voice-sensitivity sliders** — adjust the background noise gate, minimum speech length, and silence-before-processing thresholds in Settings, applied instantly with no restart.
 - 🎛️ **Full autopilot control** — heading, altitude, vertical speed, LNAV, localizer, approach, level change, speed, and autothrottle arm/speed hold by voice. A350 pilots also get Open Descent, Open Climb, and VNAV via FCU knob pulls.
 - ⚡ **Optional GPU acceleration** — with a compatible NVIDIA/AMD/Intel GPU and spare video memory, Copilot loads a larger, sharper voice model on your graphics card, automatically stepping down if the simulator needs the memory back. A **VRAM Safety Margin** slider in Settings lets you decide exactly how much headroom to always leave for the sim.
@@ -125,6 +126,7 @@ If the automatic first-run download fails, or you'd rather grab the models yours
 | **Set Speed** | "set speed 250", "select airspeed two five zero", "set the airspeed to 280" |
 | **Arm / Disarm Autothrottle** | "arm the autothrottle", "engage the autothrottle", "disarm the autothrottle", "turn off the autothrottle" |
 | **Engage Speed Hold** | "speed hold", "engage speed mode", "activate speed hold" (arms the autothrottle first if it isn't already) |
+| **Monitor Speed** *(Citation CJ4 only)* | "monitor speed 250", "maintain speed 210", "monitor the airspeed" — holds the target by working the throttles; "stop speed monitoring" to end |
 
 > [!NOTE]
 > Commands marked **(A350 only)** are specific to the iniBuilds Airbus A350 profile and have no effect on Boeing aircraft or default simulator planes. On the A350, the standard **Flaps Down / Flaps Up** commands still work for a quick full-travel move, but the individual detent positions (1, 2, 3, Full) give you precise control of each lever position. The **Open Descent**, **Open Climb**, and **VNAV** commands act on the A350's FCU altitude knob — pull for Open Descent/Climb, push for VNAV — mirroring the physical gesture you would make in the cockpit.
@@ -239,6 +241,11 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.2.4
+- **Automatic Speed Hold on the Citation CJ4 ("Monitor Speed"):** The CJ4 has no autothrottle, so the Copilot can now hold a target airspeed by working the throttles itself. Say *"monitor speed 250"* or *"maintain speed 210"* and it anticipates the jet's slow spool-up — easing the throttles off *before* the speed arrives rather than chasing it — so it settles within 1–3 knots of the target and holds steady, instead of hunting back and forth (flight-tuned). Say *"monitor speed"* with no number and it asks you for the target; say *"stop speed monitoring"* any time to take the throttles back yourself.
+- **Commands That Match Your Aircraft:** Commands an aircraft doesn't have now clearly respond **"Command Unavailable"** instead of doing nothing or firing the wrong system. On the CJ4 this covers the localizer, autothrottle, and Airbus-style flap detents; a "navigation mode"/VNAV request is correctly handled as LNAV (the CJ4 flies its lateral path through LNAV).
+- **More Varied Copilot Voice:** The Copilot now detects how many voice clips exist for each command and picks from all of them, instead of assuming a fixed number — so commands with more recordings sound more varied and none go unused.
 
 ### v0.2.3
 - **Under the Hood — Aircraft Profiles Reorganized:** Each supported aircraft's voice-command mapping now lives in its own self-contained module, so fine-tuning one airframe can no longer have any side effect on another. No change to how anything works — every command behaves exactly as before.
