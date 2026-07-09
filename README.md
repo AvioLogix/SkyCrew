@@ -4,9 +4,9 @@
 
 ### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.4-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.2.5-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
-![Runs](https://img.shields.io/badge/100%25-Local%20%26%20Offline-2ecc71)
+![Runs](https://img.shields.io/badge/AI%20Engine-100%25%20Local-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
 
 <a href="https://github.com/AvioLogix/SkyCrew/releases">
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.4).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.2.5).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -57,7 +57,8 @@ Copilot hears you, understands what you meant, and performs the action in the si
 - 🔊 **Spoken confirmations** — every action is read back so you always know it was heard.
 - 💬 **SkyChat** — open the built-in LLaMA AI as a standalone chat window directly from the app header for quick lookups, aircraft questions, or general conversation.
 - ⚙️ **Customizable settings** — adjust Copilot's volume, switch between voice-activation and push-to-talk, and configure regional transition altitudes to match where you fly.
-- 🔒 **100% local & private** — no internet, no telemetry, no data collection. Ever.
+- 🔐 **AvioLogix account sign-in** — sign in with your AvioLogix account (the same one used for the dashboard) to launch SkyCrew; SkyCrew securely remembers your session between launches.
+- 🔒 **AI runs 100% locally** — voice, transcripts, prompts, and flight data are processed entirely on your machine and never leave it. No telemetry, no analytics, no cloud AI. The only network calls SkyCrew makes are signing in to your AvioLogix account and checking for app updates.
 - 🚀 **Auto-updating** — new versions install themselves seamlessly in the background.
 - 🪟 **One-click installer** — a single Windows setup file; no dependencies to hunt down.
 
@@ -193,16 +194,17 @@ SkyCrew is an **Electron**-based Windows application that bundles a **local larg
 
 ---
 
-## 🔒 Privacy & Offline Guarantee
+## 🔒 Privacy & Local AI Guarantee
 
-**SkyCrew processes everything locally on your machine.**
+**SkyCrew's AI and voice pipeline run entirely on your machine.**
 
-- ✅ The **only** program that ever touches the internet is the flight simulator itself (for its own normal operation). Apart from SkyCrew's built-in auto-updater checking for new releases, **none of Copilot's components — the language model, the speech engine, the voice detector, or any other process — can or do reach the internet.**
-- ✅ **No user data is ever collected, transmitted, or stored.** Your voice, your transcripts, your prompts, and your flight data never leave your computer. There are no analytics, no tracking, and no cloud services.
+- ✅ **The language model, the speech engine, and the voice detector never touch the internet.** All command interpretation happens locally, in real time, on your own hardware.
+- ✅ **Your voice, transcripts, prompts, and flight data are never collected, transmitted, or stored anywhere but your computer.** There are no analytics and no cloud AI services.
 - ✅ Audio is processed in-the-moment and discarded — it is not logged or retained.
-- ✅ Every feature is fully self-contained and used strictly to power the application's core functionality.
+- ✅ SkyCrew does make a small number of network calls that are **not** part of the AI pipeline: signing in with your AvioLogix account (the same account used for the AvioLogix dashboard) and SkyCrew's built-in auto-updater checking for new releases. Your email/callsign and session credentials are sent to AvioLogix's servers only to authenticate you — never your voice, transcripts, prompts, or flight data.
+- ✅ Every AI feature is fully self-contained and used strictly to power the application's core functionality.
 
-In short: what happens in your cockpit stays in your cockpit.
+In short: what happens in your cockpit stays in your cockpit — signing in is the one exception, and it never touches the AI pipeline.
 
 ---
 
@@ -241,6 +243,11 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.2.5
+- **AvioLogix Account Login:** SkyCrew now opens with a sign-in screen. Use the same email/callsign and password as your AvioLogix dashboard account — one account works everywhere.
+- **New Pilot? Register on the Website:** Selecting "Register" opens the AvioLogix sign-up page in your browser. Once your account is created, come back and sign in here.
+- **Stay Signed In:** SkyCrew securely remembers your session between launches, so you won't need to sign in every time you open the app.
 
 ### v0.2.4
 - **Automatic Speed Hold on the Citation CJ4 ("Monitor Speed"):** The CJ4 has no autothrottle, so the Copilot can now hold a target airspeed by working the throttles itself. Say *"monitor speed 250"* or *"maintain speed 210"* and it anticipates the jet's slow spool-up — easing the throttles off *before* the speed arrives rather than chasing it — so it settles within 1–3 knots of the target and holds steady, instead of hunting back and forth (flight-tuned). Say *"monitor speed"* with no number and it asks you for the target; say *"stop speed monitoring"* any time to take the throttles back yourself.
