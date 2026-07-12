@@ -4,12 +4,12 @@
 
 ### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.5-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.2.8-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
 ![Runs](https://img.shields.io/badge/AI%20Engine-100%25%20Local-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
 
-<a href="https://github.com/AvioLogix/SkyCrew/releases">
+<a href="https://aviologix.com/skycrew/download">
   <b>⬇️ Download the latest release</b>
 </a>
 <br>
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.5).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.2.8).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -45,7 +45,7 @@ Copilot hears you, understands what you meant, and performs the action in the si
 - 🎙️ **Natural voice control** — speak conversationally; no rigid command syntax to memorize.
 - 🧠 **Built-in AI brain** — a local language model interprets your *intent*, not just keywords.
 - 🛩️ **Live aircraft dashboard** — real-time airspeed, altitude, heading, vertical speed, and more.
-- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **iniBuilds Airbus A350-1000**, **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, and **Cessna Citation CJ4**, with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
+- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **iniBuilds Airbus A350-1000**, **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, **Cessna Citation CJ4**, **Airbus A310**, **FlyByWire A380X**, **FlyByWire A32NX (A320neo)**, and **iniBuilds A320neo V2 VIP**, with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
 - 📋 **Interactive Checklists** — full Preflight/Inflight/Postflight checklists that load automatically for whatever you're flying (currently the **Cessna 172SP G1000** and **iniBuilds A350-1000**), with tick-off progress, per-checklist and reset-all buttons, and must-verify items highlighted.
 - ⛽ **Optimize Fuel (C172SP & C400 Corvalis)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
 - 🕹️ **Monitor Speed (Citation CJ4)** — the CJ4 has no autothrottle, so "monitor speed 250" / "maintain speed 210" holds a target airspeed by working the throttles for you. It anticipates the jet's slow spool-up, easing off before the speed arrives instead of chasing it, settling within 1–3 knots and holding steady — say "stop speed monitoring" any time to take the throttles back.
@@ -66,7 +66,7 @@ Copilot hears you, understands what you meant, and performs the action in the si
 
 ## ⬇️ Download & Installation
 
-1. Head to the **[Releases page](https://github.com/AvioLogix/SkyCrew/releases)**.
+1. Head to the **[Download page](https://aviologix.com/skycrew/download)**.
 2. Download the latest **`SkyCrew-Setup-x.x.x.exe`** installer.
 3. Run it. The installer sets up a Start Menu and desktop shortcut automatically.
 4. Launch **SkyCrew**, start Microsoft Flight Simulator, and you're ready to fly.
@@ -225,7 +225,7 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 **Made with ❤️ for the flight sim community by [DevDokus](https://github.com/DevDokus)**
 
-<a href="https://github.com/AvioLogix/SkyCrew/releases">
+<a href="https://aviologix.com/skycrew/download">
   <b>⬇️ Download the latest release</b>
 </a>
 <br>
@@ -243,6 +243,20 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.2.8
+- **New Aircraft — iniBuilds A320neo V2 VIP:** The stock MSFS 2024 "A320neo V2 VIP," built on iniBuilds' study-level systems, is now supported. Commands are wired to its real FCU: heading, altitude, speed and vertical speed selection, HDG/NAV and altitude/speed mode engagement, localizer and approach capture, autopilot and autothrust, landing gear, flaps 1/2/3/up/down, and the parking brake. Setting a value updates the real FCU display, not just an internal target. One known gap: the real A320's FCU has no standalone "ALT hold" button at all — the Commands page shows it grayed out.
+
+### v0.2.7
+- **New Aircraft — FlyByWire A380X:** Full FCU-wired support: heading, altitude, speed and vertical speed selection, mode engagement (HDG/NAV, level change, open climb/descent, VNAV, speed hold, vertical speed, localizer, approach), autopilot and autothrust, landing gear, all five flap detents, and the parking brake. The standalone FCU "ALT" hold button has no effect on this airframe (confirmed non-functional in the addon itself, not a SkyCrew limitation).
+- **New Aircraft — FlyByWire A32NX (A320neo):** Same full FCU-wired command set as the A380X above. Same "ALT hold" gap — the real A320's FCU has no standalone button for it.
+- **PMDG 777-300ER — Full Flap Lever Support:** Every detent now works by voice — "flaps 1", "flaps 5", "flaps 15", "flaps 20", "flaps 25" each move the lever straight to that exact position, alongside "flaps up"/"flaps down". "Flaps 30" is now its own command distinct from "flaps down", matching how crews actually call out that detent.
+
+### v0.2.6
+- **New Aircraft — Airbus A310:** The stock MSFS 2024 Airbus A310 is now supported — autopilot modes (altitude hold, level change, NAV, approach, localizer), FCU selectors, landing gear, flaps (0/15/20/full), and the parking brake all work by voice, including altitudes with hundreds like 12,500 ft. The three-position gear lever is handled correctly: "gear down"/"gear up" always reach the fully up/down position, and repeating a command that's already satisfied does nothing.
+- **"Monitor Speed" Extended to Five More Aircraft:** The Citation CJ4's automatic speed-hold-by-throttle command now also works on the **Cessna 172 Skyhawk**, **Cessna 400 Corvalis**, **Cessna 208B Grand Caravan**, **Diamond DA40 NG**, and (as a manual-autothrottle-off fallback) the **Cirrus SF50 Vision Jet** — each with its own live-tuned, non-oscillating control logic for that airframe's engine/prop type.
+- **More Reliable "Game Status" Indicator:** Fixed a bug where the status pill could stay stuck on "Offline" for a whole session if the simulator was already running when SkyCrew launched, even though the connection was fine underneath.
+- **Fixed: "70" Sometimes Misheard as "17":** Speech recognition would occasionally mishear "seventy" as "seventeen" for a spoken speed; since 17 knots is never a realistic target, SkyCrew now recognizes and corrects this specific mix-up automatically instead of ignoring the command.
 
 ### v0.2.5
 - **AvioLogix Account Login:** SkyCrew now opens with a sign-in screen. Use the same email/callsign and password as your AvioLogix dashboard account — one account works everywhere.
