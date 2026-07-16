@@ -4,7 +4,7 @@
 
 ### Flightdeck Utilities incl Voice Controlled Copilot
 
-![Version](https://img.shields.io/badge/version-0.2.8-5c3fa1)
+![Version](https://img.shields.io/badge/version-0.3.0-5c3fa1)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6)
 ![Runs](https://img.shields.io/badge/AI%20Engine-100%25%20Local-2ecc71)
 ![License](https://img.shields.io/badge/license-Proprietary-626891)
@@ -24,7 +24,7 @@
 </div>
 
 > [!IMPORTANT]
-> **SkyCrew is in early development (v0.2.8).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
+> **SkyCrew is in early development (v0.3.0).** Some features may be incomplete, not work fully yet, or change significantly between releases. You're flying an early build — expect rapid changes, and thanks for being part of it! ✈️
 
 ---
 
@@ -45,12 +45,13 @@ Copilot hears you, understands what you meant, and performs the action in the si
 - 🎙️ **Natural voice control** — speak conversationally; no rigid command syntax to memorize.
 - 🧠 **Built-in AI brain** — a local language model interprets your *intent*, not just keywords.
 - 🛩️ **Live aircraft dashboard** — real-time airspeed, altitude, heading, vertical speed, and more.
-- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **iniBuilds Airbus A350-1000**, **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, **Cessna Citation CJ4**, **Airbus A310**, **FlyByWire A380X**, **FlyByWire A32NX (A320neo)**, and **iniBuilds A320neo V2 VIP**, with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
-- 📋 **Interactive Checklists** — full Preflight/Inflight/Postflight checklists that load automatically for whatever you're flying (currently the **Cessna 172SP G1000** and **iniBuilds A350-1000**), with tick-off progress, per-checklist and reset-all buttons, and must-verify items highlighted.
-- ⛽ **Optimize Fuel (C172SP & C400 Corvalis)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
-- 🕹️ **Monitor Speed (Citation CJ4)** — the CJ4 has no autothrottle, so "monitor speed 250" / "maintain speed 210" holds a target airspeed by working the throttles for you. It anticipates the jet's slow spool-up, easing off before the speed arrives instead of chasing it, settling within 1–3 knots and holding steady — say "stop speed monitoring" any time to take the throttles back.
+- ✈️ **Aircraft-specific profiles** — dedicated command mappings for each supported airframe, so the right cockpit input is sent for the aircraft you're actually flying. Currently covers the **Boeing 737 MAX 8 BBJ**, **Boeing 747-8i**, **iniBuilds Airbus A350-1000 / A350-900 / A350-900 ULR** (one shared cockpit profile), **PMDG 777-300ER**, **Cessna 172SP G1000**, **Cirrus SF50 Vision Jet**, **Cessna 208B Grand Caravan**, **Cessna 400 Corvalis**, **Diamond DA40 NG**, **Cessna Citation CJ4**, **Airbus A310**, **FlyByWire A380X**, **FlyByWire A32NX (A320neo)**, **iniBuilds A320neo V2 VIP**, **Beechcraft Bonanza G36** — the first retractable-gear GA single in the fleet —, **Beechcraft King Air 350**, and **Airbus A400M Cargo** — a four-engine turboprop, the largest aircraft in the fleet — with profile-aware command filtering that dims irrelevant commands in the UI (e.g. autothrottle on a fixed-gear single).
+- 📋 **Interactive Checklists** — full Preflight/Inflight/Postflight checklists that load automatically for whatever you're flying (currently the **Cessna 172SP G1000** and the **iniBuilds A350 family**), with tick-off progress, per-checklist and reset-all buttons, and must-verify items highlighted.
+- ⛽ **Optimize Fuel (C172SP, C400 Corvalis & Bonanza G36)** — "optimize fuel" or "lean the mixture" leans the mixture step by step to true peak RPM, working either direction, in the background without blocking other commands.
+- 🔧 **Engine Feather (Beechcraft King Air 350)** — "optimize engine" or "feather the prop" hill-climbs both propeller levers together to the peak-RPM point, the same technique as Optimize Fuel for aircraft with prop/feather levers instead of a leanable mixture.
+- 🕹️ **Monitor Speed (no-autothrottle aircraft)** — "monitor speed 250" / "maintain speed 210" holds a target airspeed by working the throttles for you, on the **Citation CJ4**, **Cessna 172SP**, **Cessna 400 Corvalis**, **Cessna 208B Grand Caravan**, **Diamond DA40 NG**, **Beechcraft Bonanza G36**, and **Beechcraft King Air 350** (plus the **Cirrus SF50 Vision Jet** as a manual-autothrottle-off fallback). It anticipates each airframe's own throttle response, easing off before the speed arrives instead of chasing it, settling within 1–3 knots and holding steady — say "stop speed monitoring" any time to take the throttles back.
 - 🎚️ **Live voice-sensitivity sliders** — adjust the background noise gate, minimum speech length, and silence-before-processing thresholds in Settings, applied instantly with no restart.
-- 🎛️ **Full autopilot control** — heading, altitude, vertical speed, LNAV, localizer, approach, level change, speed, and autothrottle arm/speed hold by voice. A350 pilots also get Open Descent, Open Climb, and VNAV via FCU knob pulls.
+- 🎛️ **Full autopilot control** — heading, altitude, vertical speed, LNAV, localizer, approach, level change, speed, and autothrottle arm/speed hold by voice. VNAV is available on the A350, A320neo V2 VIP, 747-8i, Bonanza G36, and King Air 350; A350 pilots also get Open Descent and Open Climb via FCU knob pulls.
 - ⚡ **Optional GPU acceleration** — with a compatible NVIDIA/AMD/Intel GPU and spare video memory, Copilot loads a larger, sharper voice model on your graphics card, automatically stepping down if the simulator needs the memory back. A **VRAM Safety Margin** slider in Settings lets you decide exactly how much headroom to always leave for the sim.
 - 🔔 **Automatic altimeter reminders** — Copilot speaks up when you cross the transition altitude climbing or descending, so you never miss a baro switch.
 - 🔇 **Echo-free conversations** — the microphone automatically pauses for the exact length of Copilot's own spoken reply, so it can never hear (and act on) itself.
@@ -105,13 +106,19 @@ If the automatic first-run download fails, or you'd rather grab the models yours
 | **Gear Up** | "gear up", "retract the gear", "wheels up" |
 | **Flaps Down** | "flaps down", "deploy flaps", "lower the flaps" |
 | **Flaps Up** | "flaps up", "retract flaps", "raise the flaps" |
-| **Flaps 1 / 2 / 3** *(A350 only)* | "flaps one", "flaps two", "flaps three" |
-| **Flaps Full** *(A350 only)* | "flaps full", "flaps down" |
-| **Flaps 10° / 20° / 30°** *(C172SP & C208B only)* | "flaps 10", "flaps 20", "flaps 30" |
-| **Optimize Fuel** *(C172SP & C400 Corvalis only)* | "optimize fuel", "lean the mixture" |
-| **Open Descent** *(A350 only)* | "open descent", "OP DES", "engage open descent" |
-| **Open Climb** *(A350 only)* | "open climb", "OP CLB", "engage open climb" |
-| **VNAV** *(A350 only)* | "engage VNAV", "vertical navigation" |
+| **Flaps 1** *(A350, A380X, A32NX, A310, PMDG 777, A320neo VIP, 747-8i & A400M Cargo)* | "flaps one" |
+| **Flaps 2 / 3** *(A350, A380X, A32NX, A320neo VIP & A400M Cargo; A310 has 1/2 only)* | "flaps two", "flaps three" |
+| **Flaps 4** *(A400M Cargo only)* | "flaps four" |
+| **Flaps Full** *(Airbus-family aircraft)* | "flaps full", "flaps down" |
+| **Flaps 5 / 15 / 25** *(PMDG 777 has all three; 747-8i has 5/25; King Air 350 has 15 as its approach setting; A400M Cargo has 5 as its full-flaps detent)* | "flaps five", "flaps fifteen", "flaps twenty-five" |
+| **Flaps 10°** *(C172SP, C208B, 747-8i & Bonanza G36)* | "flaps 10" |
+| **Flaps 20°** *(C172SP, C208B, 747-8i & PMDG 777)* | "flaps 20" |
+| **Flaps 30°** | "flaps 30" (same as "flaps down" on most airframes; a distinct literal command on the PMDG 777) |
+| **Flaps 35°** *(Beechcraft King Air 350 only — full flaps)* | "flaps 35" |
+| **Optimize Fuel** *(C172SP, C400 Corvalis & Bonanza G36 only)* | "optimize fuel", "lean the mixture" |
+| **Engine Feather** *(Beechcraft King Air 350 only)* | "optimize engine", "feather the prop" |
+| **Open Descent / Open Climb** *(A350 & A320neo VIP only)* | "open descent"/"OP DES", "open climb"/"OP CLB" |
+| **VNAV** *(A350, A320neo VIP, 747-8i, Bonanza G36 & King Air 350 only)* | "engage VNAV", "vertical navigation" |
 | **Parking Brake Set / Release** | "set parking brake", "apply the brakes", "release parking brake", "release the brakes" |
 | **Set Heading** | "set heading 251", "turn heading 030", "fly heading 180" |
 | **Engage Heading Hold** | "engage heading hold", "hold heading", "activate heading hold" |
@@ -127,10 +134,10 @@ If the automatic first-run download fails, or you'd rather grab the models yours
 | **Set Speed** | "set speed 250", "select airspeed two five zero", "set the airspeed to 280" |
 | **Arm / Disarm Autothrottle** | "arm the autothrottle", "engage the autothrottle", "disarm the autothrottle", "turn off the autothrottle" |
 | **Engage Speed Hold** | "speed hold", "engage speed mode", "activate speed hold" (arms the autothrottle first if it isn't already) |
-| **Monitor Speed** *(Citation CJ4 only)* | "monitor speed 250", "maintain speed 210", "monitor the airspeed" — holds the target by working the throttles; "stop speed monitoring" to end |
+| **Monitor Speed** *(CJ4, C172SP, C400 Corvalis, C208B, DA40 NG, Bonanza G36, King Air 350; Vision Jet as a fallback)* | "monitor speed 250", "maintain speed 210", "monitor the airspeed" — holds the target by working the throttles; "stop speed monitoring" to end |
 
 > [!NOTE]
-> Commands marked **(A350 only)** are specific to the iniBuilds Airbus A350 profile and have no effect on Boeing aircraft or default simulator planes. On the A350, the standard **Flaps Down / Flaps Up** commands still work for a quick full-travel move, but the individual detent positions (1, 2, 3, Full) give you precise control of each lever position. The **Open Descent**, **Open Climb**, and **VNAV** commands act on the A350's FCU altitude knob — pull for Open Descent/Climb, push for VNAV — mirroring the physical gesture you would make in the cockpit.
+> Commands marked with a specific aircraft list only take effect on those profiles — an unsupported command on your current airframe responds "Command Unavailable" instead of doing nothing or firing the wrong system, and the in-app **Commands** page dims it automatically. The standard **Flaps Down / Flaps Up** always work for a quick full-travel move on every airframe; the numbered detents above give precise control of each individual lever position where that airframe actually has one. On Airbus-family FCUs, **Open Descent**, **Open Climb**, and **VNAV** act on the altitude knob itself — pull for Open Descent/Climb, push for VNAV — mirroring the physical gesture you'd make in the cockpit; on the 747-8i and Bonanza G36, VNAV is its own dedicated FCU button instead.
 
 Each command understands many natural variations — the examples above are just a taste. The in-app **Commands** tab lists every phrase for each action, and the command set is actively growing release over release.
 
@@ -243,6 +250,17 @@ SkyCrew is an independent, fan-made tool and is **not affiliated with, endorsed 
 
 <details>
 <summary>Click to expand full history</summary>
+
+### v0.3.0
+- **New Aircraft — Beechcraft King Air 350:** The default MSFS King Air 350 is now supported. Commands cover its autopilot (heading, altitude, and vertical speed selection, heading hold, NAV, approach, level change, altitude hold, and VNAV), retractable gear, and full flap control ("flaps up", "flaps 15", or "flaps 35" for full flaps). "Optimize engine" (or "feather the prop") hill-climbs both propeller levers together to peak RPM — this aircraft's equivalent of Optimize Fuel, since it has no leanable mixture. "Monitor speed [X]" holds a target airspeed with the throttles, since this twin turboprop has no autothrottle. Its autopilot disconnect bar latches out when pulled — Copilot automatically pushes it back in before re-engaging, matching the real aircraft's own procedure.
+- **New Aircraft — Airbus A400M Cargo:** The default MSFS Airbus A400M Atlas (a four-engine turboprop cargo aircraft) is now supported. Commands fly its Airbus-style FCU: heading, altitude, speed, and vertical-speed selection, plus heading select, managed NAV, selected-speed, and vertical-speed modes. Retractable gear and a six-position flap lever ("flaps up", "flaps 1/2/3/4", and "flaps 5"/"flaps full"). Autopilot on/off via the AP1 channel. This aircraft's autothrottle currently can't be reliably armed, disarmed, or held by voice — a limitation in the add-on itself, not something SkyCrew can work around yet — and altitude hold, localizer, and approach mode remain unavailable on this airframe for the same reason, rather than risk acting on the wrong control.
+
+### v0.2.9
+- **New Aircraft — Boeing 747-8i:** The default MSFS 2024 Boeing 747-8i is now fully supported. Commands are wired to its real FCU: heading, altitude, speed and vertical-speed selectors, LNAV/VNAV/HDG SEL/V·S/LOC/APP/Level Change/Speed Hold mode engagement, autopilot engage and disconnect (including the AP disconnect bar's real latch interlock — it must be pushed back in before re-engaging, matching the physical switch), autothrottle arm/disarm, landing gear, parking brake, and every flap detent (1, 5, 10, 20, 25, 30).
+- **New Aircraft — Beechcraft Bonanza G36:** The default MSFS 2024 Bonanza G36 is now supported — the first piston single in the fleet with real retractable gear. Commands cover its Garmin G1000 autopilot (heading, altitude, speed, vertical speed, heading hold, NAV, approach, level change, altitude hold, and VNAV), gear up/down, a two-position flap schedule ("flaps 10" for the approach setting, "flaps down"/"flaps 30" for full), Optimize Fuel (lean-to-peak mixture), and Monitor Speed (this airframe has no factory autothrottle).
+- **iniBuilds A350-900 & A350-900 ULR Promoted to Supported:** These share the A350-1000's cockpit systems and now carry the same dedicated profile, tags, and full checklist set on the Supported Aircraft page.
+- **Stay Signed In on the App and Dashboard Together:** Signing in to the website no longer logs you out of the app — each now keeps its own session, so you can be signed in to both at once. Your account still can't be spread across more than one app login and one dashboard login at a time.
+- **Supported-Aircraft List Corrections:** The FlyByWire A32NX, FlyByWire A380X, and iniBuilds A320neo V2 VIP are now correctly shown as Supported — these aircraft already worked, only the list itself was out of date.
 
 ### v0.2.8
 - **New Aircraft — iniBuilds A320neo V2 VIP:** The stock MSFS 2024 "A320neo V2 VIP," built on iniBuilds' study-level systems, is now supported. Commands are wired to its real FCU: heading, altitude, speed and vertical speed selection, HDG/NAV and altitude/speed mode engagement, localizer and approach capture, autopilot and autothrust, landing gear, flaps 1/2/3/up/down, and the parking brake. Setting a value updates the real FCU display, not just an internal target. One known gap: the real A320's FCU has no standalone "ALT hold" button at all — the Commands page shows it grayed out.
